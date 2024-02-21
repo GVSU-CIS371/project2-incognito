@@ -10,15 +10,19 @@ function generateProductHTML(product: Product): string {
 }
 
 function renderProducts(prods: Product[]): void {
-    // your code
+    const mainContainer = document.getElementById('main-container');
+    for(var product of prods){
+        var html = generateProductHTML(product);
+        mainContainer?.insertAdjacentHTML('beforeend', html);
+    }
 }
 
 function getByCategory(category: string): void {
-    // your code
+    products.filter(product => product.category.includes(category));
 }
 
 function getByRating(minRating: number): void {
-    // your code
+    products.sort((p1,p2) => {return p2.rating - p1.rating;});
 }
 
 export { renderProducts, getByCategory, getByRating };
