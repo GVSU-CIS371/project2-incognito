@@ -38,6 +38,22 @@
 
         
         // your code
+        document.getElementById('electronics').addEventListener('click', () => {
+          renderProducts(getByCategory("Electronics"));
+        });
+
+       document.getElementById('clothing').addEventListener('click', () => {
+          renderProducts(getByCategory("Clothing"));
+       });
+
+        document.getElementById('groceries').addEventListener('click', () => {
+          renderProducts(getByCategory("Groceries"));
+        });
+
+       document.getElementById('bestSeller').addEventListener('click', () => {
+          renderProducts(getByRating(4.5));
+        });
+      
       </script>
     </main>
     <footer>

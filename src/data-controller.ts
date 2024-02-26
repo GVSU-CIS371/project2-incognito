@@ -11,18 +11,22 @@ function generateProductHTML(product: Product): string {
 
 function renderProducts(prods: Product[]): void {
     const mainContainer = document.getElementById('main-container');
+    if (mainContainer) {
+        let html = '';
     for(var product of prods){
-        var html = generateProductHTML(product);
-        mainContainer?.insertAdjacentHTML('beforeend', html);
+        html += generateProductHTML(product);
     }
+    mainContainer.innerHTML = html;
+}
 }
 
-function getByCategory(category: string): void {
-    products.filter(product => product.category.includes(category));
+function getByCategory(category: string): Product[]{
+    return products.filter(product => product.category === category);
 }
 
-function getByRating(minRating: number): void {
-    products.sort((p1,p2) => {return p2.rating - p1.rating;});
+function getByRating(minRating: number): Product[] {
+    return products.filter(product => product.rating > minRating);;
 }
+
 
 export { renderProducts, getByCategory, getByRating };
